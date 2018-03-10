@@ -166,7 +166,7 @@ class CMQClient
     //=============================================topic operation================================================
 
     /**
-     * @param $params
+     * @param array $params
      * @return mixed
      * @throws \Exception
      */

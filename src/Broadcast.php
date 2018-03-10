@@ -11,6 +11,7 @@ use Yii;
 use yii\base\InvalidConfigException;
 use yuncms\broadcast\BaseBroadcast;
 use yuncms\broadcast\MessageInterface;
+use yuncms\broadcast\qcloud\CMQClient;
 
 /**
  * Class Broadcast
@@ -42,7 +43,7 @@ class Broadcast extends BaseBroadcast
     public $topicName;
 
     /**
-     * @var HttpClient
+     * @var CMQClient
      */
     protected $_client;
 
@@ -74,7 +75,7 @@ class Broadcast extends BaseBroadcast
     public function getClient()
     {
         if (!is_object($this->_client)) {
-            $this->_client = Yii::createObject('yuncms\broadcast\qcloud\CMQClient', [
+            $this->_client = Yii::createObject(CMQClient::class, [
                 $this->endPoint,
                 $this->accessId,
                 $this->accessKey,
@@ -104,7 +105,7 @@ class Broadcast extends BaseBroadcast
                 $n += 1;
             }
         }
-        $msgRes = $this->_client->publishMessage($params);
+        $msgRes = $this->getClient()->publishMessage($params);
         if ($msgRes['code'] == 0) {
             return true;
         }
