@@ -94,7 +94,7 @@ class Broadcast extends BaseBroadcast
     {
         $params = [
             'topicName' => $this->topicName,
-            'msgBody' => $message->toString(),
+            'msgBody' => $message->toJson(),
         ];
         $tags = $message->getTag();
         if ($tags != null && is_array($tags) && !empty($tags)) {
