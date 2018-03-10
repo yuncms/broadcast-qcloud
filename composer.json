@@ -1,0 +1,23 @@
+{
+  "name": "yuncms/broadcast-qcloud",
+  "description": "The qcloud broadcast for yuncms.",
+  "keywords": [
+    "qcloud",
+    "broadcast",
+    "yuncms"
+  ],
+  "license": "MIT",
+  "require": {
+    "yuncms/framework": "~1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "yuncms\\broadcast\\qcloud\\": "src"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.0.0-dev"
+    }
+  }
+}
