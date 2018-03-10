@@ -11,7 +11,6 @@ use Yii;
 use yii\base\InvalidConfigException;
 use yuncms\broadcast\BaseBroadcast;
 use yuncms\broadcast\MessageInterface;
-use yuncms\broadcast\qcloud\CMQClient;
 
 /**
  * Class Broadcast
@@ -69,7 +68,7 @@ class Broadcast extends BaseBroadcast
     }
 
     /**
-     * @return array|HttpClient aliyun mns topic instance or array configuration.
+     * @return CMQClient qcloud cmq topic instance or array configuration.
      * @throws InvalidConfigException
      */
     public function getClient()
@@ -89,6 +88,8 @@ class Broadcast extends BaseBroadcast
      * This method should be implemented by child classes with the actual broadcast sending logic.
      * @param MessageInterface $message the message to be sent
      * @return bool whether the message is sent successfully
+     * @throws InvalidConfigException
+     * @throws \Exception
      */
     protected function sendMessage($message)
     {
